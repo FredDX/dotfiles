@@ -30,7 +30,7 @@ map <F5> :w!<Enter>
 map <F12> :q!<Enter>
 
 "Explore
-let g:netrw_list_hide = '.swp,.git'
+let g:netrw_list_hide = '.swp$,.git$'
 
 "pathogen
 set nocp

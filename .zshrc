@@ -1,6 +1,7 @@
 # alias
 alias ls="ls -G"
 alias grep="grep --color"
+alias gs="git status"
 
 # prompt
 autoload -U promptinit
@@ -20,4 +21,4 @@ SAVEHIST=10000
 export PATH=$PATH:$HOME/bin/
 
 # local config
-source .zshrc.local
+source $HOME/.zshrc.local
