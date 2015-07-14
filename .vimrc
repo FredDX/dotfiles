@@ -29,7 +29,19 @@ map <F5> :w!<Enter>
 
 map <F12> :q!<Enter>
 
+let mapleader = " "
+
+"Execute
+map <leader>er <S-v>G:w !zsh <CR>
+map <leader>ec :.w !zsh <CR>             " exec the current line
+vmap <leader>ec :w !zsh <CR>             " in visual mode, exec the selected lines
+map <leader>ea :%w !zsh <CR>
+map <leader>ee : !zsh shoot.zsh <CR>
+map <leader>et : !zsh shoot.zsh Test<CR>
+map <leader>eb {<S-v>}:w !zsh<CR>
+
 "Explore
+map <leader>E :Explore<CR>
 let g:netrw_list_hide = '.swp$,.git$'
 
 "pathogen
