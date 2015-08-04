@@ -39,3 +39,12 @@ Thumbs.db
 # Vim #
 #######
 *.swp
+
+# QTCreator #
+#############
+*.config
+*.creator
+*.creator.user
+*.files
+*.includes
+
