@@ -1,4 +1,8 @@
 ###############################################################################
+# Local config
+[ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
+
+###############################################################################
 # Alias
 alias ls="ls --color"
 alias grep="grep --color"
@@ -14,11 +18,17 @@ autoload -U promptinit
 promptinit
 prompt adam2
 
+# host
+function gethostname {
+   [ -f $HOME/bin/TestSystemName ] && grep $HOST $HOME/bin/TestSystemName | cut -f 1 | read hostname
+   [ -n "$hostname" ]              && echo $hostname || echo $HOST
+}
+
 # Title
-print -Pn "\e]0;$hostname[$HOST]-$(basename `pwd`)\a"
+print -Pn "\e]0;$(gethostname) - $(basename `pwd`)\a"
 chpwd() {
    [[ -t 1 ]] || return
-   print -Pn "\e]0;$hostname[$HOST]-$(basename `pwd`)\a"
+   print -Pn "\e]0;$(gethostname) - $(basename `pwd`)\a"
 }
 
 ###############################################################################
@@ -75,6 +85,3 @@ alias xterm='xterm -fg "rgb:ff/ff/ff" -bg "rgb:58/58/59" \
                    -xrm "xterm*color14: rgb:55/d5/cd"    \
                    -xrm "xterm*color15: rgb:ff/ff/ff"'
 
-###############################################################################
-# Local config
-[ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
