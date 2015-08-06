@@ -49,6 +49,7 @@ map  <leader>eb {<S-v>}:w !zsh<CR>
 if $CSCOPE_DB != ""
    cscope add $CSCOPE_DB
    set cscopetag
+   map <C-[> :cscope find 3 <C-R>=expand("<cword>")<CR><CR>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
