@@ -4,7 +4,7 @@
 
 ###############################################################################
 # Alias
-alias ls="ls --color"
+[ $(echo $OSTYPE) = "darwin14.0" ] && alias ls="ls -G" || alias ls="ls --color"
 alias grep="grep --color"
 alias gs="git status"
 alias gl="git log --decorate --graph --oneline"
@@ -16,9 +16,10 @@ alias cdl="cd $(\ls -1t | head -n 1)"
 
 ###############################################################################
 # Prompt: Powerline status line
-if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh ]
+[ $(echo $OSTYPE) = "darwin14.0" ] && export PYTHONPKG=/Library/Python/2.7/site-packages || export PYTHONPKG=/usr/local/lib/python2.7/dist-packages
+if [ -f $PYTHONPKG/powerline/bindings/zsh/powerline.zsh ]
 then
-   source /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
+   source $PYTHONPKG/powerline/bindings/zsh/powerline.zsh
 else
    autoload -U promptinit
    promptinit
@@ -50,7 +51,6 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
