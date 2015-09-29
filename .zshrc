@@ -7,17 +7,19 @@
 alias ls="ls --color"
 alias grep="grep --color"
 alias gs="git status"
+alias gl="git log --decorate --graph --oneline"
 alias vi="vim"
 alias mycsc="title CSCOPE; cscope -df $CSCOPE_DB"
 alias cs="cvs status"
 alias cl="cvs log"
+alias cdl="cd $(\ls -1t | head -n 1)"
 
 ###############################################################################
-# Prompt
-autoload -U promptinit
-promptinit
-prompt adam2
+# Prompt: Powerline status line
+. /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
 
+###############################################################################
+# Window title
 # host
 function gethostname {
    [ -f $HOME/bin/TestSystemName ] && grep $HOST $HOME/bin/TestSystemName | cut -f 1 | read hostname
@@ -84,4 +86,5 @@ alias xterm='xterm -fg "rgb:ff/ff/ff" -bg "rgb:58/58/59" \
                    -xrm "xterm*color13: rgb:ec/93/d3"    \
                    -xrm "xterm*color14: rgb:55/d5/cd"    \
                    -xrm "xterm*color15: rgb:ff/ff/ff"'
+
 

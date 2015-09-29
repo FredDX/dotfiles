@@ -7,6 +7,7 @@ set laststatus=2
 set cinoptions=>s,e0,n0,f0,{0,}0,^0,:s,=,l0,gs,hs,ps,ts,+s,c3,C0,(0,us,U0,w0,m0,j0,)50,*200
 set bs=2 " fix the backspace
 syntax on
+set wildmenu   " visual autocomplete for command menu
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab config
@@ -53,6 +54,13 @@ if $CSCOPE_DB != ""
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ctrl-p
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrl_working_path_mode = ''
+let g:ctrl_max_files = 0
+let g:ctrl_max_depth = 40
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Explore config
 map <leader>E :Explore<CR>
 let g:netrw_list_hide = '.swp$,.git$'
@@ -75,3 +83,32 @@ syntax on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin vim-markdown config
 let g:markdown_enable_spell_checking = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin python-mode config
+let g:pymode_folding = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ag configuration
+set runtimepath^=~/.vim/bundle/ag
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim powerline config with ag instead of grep
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim
+let g:Powerline_symbols = 'fancy'
+"set encoding=utf-8
+set t_Co=256
+"set fillchars+=stl:\ ,stlnc:\
+"let g:Powerline_mode_V="V·LINE"
+"let g:Powerline_mode_cv="V·BLOCK"
+"let g:Powerline_mode_S="S·LINE"
+"let g:Powerline_mode_cs="S·BLOCK"
+
+if executable("ag")
+   set grepprg=ag\ --nogroup\ --nocolor
+   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
