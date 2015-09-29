@@ -10,8 +10,7 @@ syntax on
 set wildmenu   " visual autocomplete for command menu
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tab config
-set smartindent
+" Tab config set smartindent
 set tabstop=3
 set shiftwidth=3
 set expandtab
@@ -54,19 +53,12 @@ if $CSCOPE_DB != ""
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ctrl-p
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrl_working_path_mode = ''
-let g:ctrl_max_files = 0
-let g:ctrl_max_depth = 40
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Explore config
 map <leader>E :Explore<CR>
 let g:netrw_list_hide = '.swp$,.git$'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Start 7 config
+" Start 7.03 config
 if v:version < 703
    finish
 endif
@@ -79,6 +71,13 @@ call pathogen#infect()
 call pathogen#helptags()
 filetype plugin indent on
 syntax on
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ctrl-p
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrl_working_path_mode = ''
+let g:ctrl_max_files = 0
+let g:ctrl_max_depth = 40
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin vim-markdown config
@@ -99,8 +98,9 @@ python powerline_setup()
 python del powerline_setup
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim
 let g:Powerline_symbols = 'fancy'
-"set encoding=utf-8
+let g:ctrlp_working_path_mode = 0   " Search file from starting directory
 set t_Co=256
+"set encoding=utf-8
 "set fillchars+=stl:\ ,stlnc:\
 "let g:Powerline_mode_V="V·LINE"
 "let g:Powerline_mode_cv="V·BLOCK"

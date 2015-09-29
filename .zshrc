@@ -16,7 +16,14 @@ alias cdl="cd $(\ls -1t | head -n 1)"
 
 ###############################################################################
 # Prompt: Powerline status line
-. /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
+if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh ]
+then
+   source /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
+else
+   autoload -U promptinit
+   promptinit
+   prompt adam2
+fi
 
 ###############################################################################
 # Window title
