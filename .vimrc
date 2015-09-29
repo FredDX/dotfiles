@@ -75,7 +75,7 @@ syntax on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctrl-p
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrl_working_path_mode = ''
+let g:ctrl_working_path_mode = 0   " Search file from starting directory
 let g:ctrl_max_files = 0
 let g:ctrl_max_depth = 40
 
@@ -98,7 +98,6 @@ python powerline_setup()
 python del powerline_setup
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim
 let g:Powerline_symbols = 'fancy'
-let g:ctrlp_working_path_mode = 0   " Search file from starting directory
 set t_Co=256
 "set encoding=utf-8
 "set fillchars+=stl:\ ,stlnc:\
@@ -110,5 +109,6 @@ set t_Co=256
 if executable("ag")
    set grepprg=ag\ --nogroup\ --nocolor
    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+   let g:ctrlp_use_caching = 0
 endif
 
