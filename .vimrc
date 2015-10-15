@@ -1,4 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""o"
 " Global config
 set mouse=a
 set background=dark
@@ -51,11 +51,12 @@ map  <leader>eb {<S-v>}:w !zsh<CR>
 if filereadable("cscope.out")
    cscope add cscope.out
    set cscopetag
-   map <C-[> :cscope find 3 <C-R>=expand("<cword>")<CR><CR>
+   "Conflict with Ctrlp
+   "map <C-[> :cscope find 3 <C-R>=expand("<cword>")<CR><CR>
 elseif $CSCOPE_DB != ""
    cscope add $CSCOPE_DB
    set cscopetag
-   map <C-[> :cscope find 3 <C-R>=expand("<cword>")<CR><CR>
+   "map <C-[> :cscope find 3 <C-R>=expand("<cword>")<CR><CR>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -85,6 +86,12 @@ let g:ctrl_working_path_mode = 0   " Search file from starting directory
 let g:ctrl_max_files = 0
 let g:ctrl_max_depth = 40
 
+if executable("ag")
+   set grepprg=ag\ --nogroup\ --nocolor
+   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+   let g:ctrlp_use_caching = 0
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin vim-markdown config
 let g:markdown_enable_spell_checking = 0
@@ -112,9 +119,4 @@ set t_Co=256
 "let g:Powerline_mode_S="S·LINE"
 "let g:Powerline_mode_cs="S·BLOCK"
 
-if executable("ag")
-   set grepprg=ag\ --nogroup\ --nocolor
-   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-   let g:ctrlp_use_caching = 0
-endif
 
