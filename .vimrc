@@ -46,6 +46,12 @@ map  <leader>ee : !zsh shoot.zsh <CR>
 map  <leader>et : !zsh shoot.zsh Test<CR>
 map  <leader>eb {<S-v>}:w !zsh<CR>
 
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Cscope config
 if filereadable("cscope.out")
@@ -61,8 +67,13 @@ endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Explore config
-map <leader>E :Explore<CR>
+noremap <C-e> :Vexplore<CR>
 let g:netrw_list_hide = '.swp$,.git$'
+
+let g:netrw_browse_split = 0     
+let g:netrw_preview      = 1     " p: preview vertical split
+let g:netrw_liststyle    = 3     " tree styke listing
+let g:netrw_winsize      = 30    " % of the width of Explore window
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Start 7.03 config
