@@ -1,12 +1,37 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""o"
+" Vundle config
+set mouse=a
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" List of plugin
+Plugin 'syntastic'
+Plugin 'kien/ctrlp.vim'
+Plugin 'hewo/vim-colorscheme-deepsea'
+Plugin 'rking/ag.vim'
+Plugin 'powerline/powerline'
+Plugin 'klen/python-mode'
+Plugin 'godlygeek/tabular'
+Plugin 'vcscommand.vim'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Global config
+syntax on
 set mouse=a
 set background=dark
 set exrc
 set laststatus=2
 set cinoptions=>s,e0,n0,f0,{0,}0,^0,:s,=,l0,gs,hs,ps,ts,+s,c3,C0,(0,us,U0,w0,m0,j0,)50,*200
 set bs=2 " fix the backspace
-syntax on
 set wildmenu   " visual autocomplete for command menu
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
 colorscheme deepsea
@@ -26,13 +51,7 @@ set smartcase
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map config
-map <F2> :bN<Enter>
-map <F3> :bn<Enter>
-map <F4> <C-w><C-w>
-map <F5> :w!<Enter>
-map <F6> :source ~/.vimrc<Enter>
-map <F12> :q!<Enter>
-
+" Leaser map to space
 let mapleader = " "
 
 " Execute content of the current buffer
@@ -46,7 +65,12 @@ map  <leader>ee : !zsh shoot.zsh <CR>
 map  <leader>et : !zsh shoot.zsh Test<CR>
 map  <leader>eb {<S-v>}:w !zsh<CR>
 
-"split navigations
+" Shortcut
+map <leader>q :quitall!<cr>
+map <leader>s :source $HOME/.vimrc<cr>
+map <leader>d :VCSVimDiff<cr>
+
+" Split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -76,23 +100,7 @@ let g:netrw_liststyle    = 3     " tree styke listing
 let g:netrw_winsize      = 30    " % of the width of Explore window
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Start 7.03 config
-if v:version < 703
-   finish
-endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pathogen
-" (python-mode, tabular)
-filetype off
-call pathogen#infect()
-call pathogen#helptags()
-filetype plugin indent on
-syntax on
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctrl-p
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrl_working_path_mode = 0   " Search file from starting directory
 let g:ctrl_max_files = 0
 let g:ctrl_max_depth = 40
@@ -104,23 +112,14 @@ if executable("ag")
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin vim-markdown config
-let g:markdown_enable_spell_checking = 0
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin python-mode config
 let g:pymode_folding = 0
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ag configuration
-set runtimepath^=~/.vim/bundle/ag
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim powerline config with ag instead of grep
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
-set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim
 let g:Powerline_symbols = 'fancy'
 set t_Co=256
 "set encoding=utf-8
@@ -129,5 +128,4 @@ set t_Co=256
 "let g:Powerline_mode_cv="V·BLOCK"
 "let g:Powerline_mode_S="S·LINE"
 "let g:Powerline_mode_cs="S·BLOCK"
-
 
