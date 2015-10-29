@@ -19,6 +19,8 @@ Plugin 'powerline/powerline'
 Plugin 'klen/python-mode'
 Plugin 'godlygeek/tabular'
 Plugin 'vcscommand.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -66,9 +68,10 @@ map  <leader>et : !zsh shoot.zsh Test<CR>
 map  <leader>eb {<S-v>}:w !zsh<CR>
 
 " Shortcut
-map <leader>q :quitall!<cr>
+map <leader>q :q!<cr>
 map <leader>s :source $HOME/.vimrc<cr>
 map <leader>d :VCSVimDiff<cr>
+map <leader>t :NERDTreeToggle<cr>
 
 " Split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -129,3 +132,13 @@ set t_Co=256
 "let g:Powerline_mode_S="S·LINE"
 "let g:Powerline_mode_cs="S·BLOCK"
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Config syntastic
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
