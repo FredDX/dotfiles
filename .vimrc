@@ -11,7 +11,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " List of plugin
-Plugin 'syntastic'
+"Plugin 'syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'hewo/vim-colorscheme-deepsea'
 Plugin 'rking/ag.vim'
@@ -101,6 +101,10 @@ let g:netrw_browse_split = 0
 let g:netrw_preview      = 1     " p: preview vertical split
 let g:netrw_liststyle    = 3     " tree styke listing
 let g:netrw_winsize      = 30    " % of the width of Explore window
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Clang-format
+map <leader>f :%pyf /home/fdesmarescaux/Repo/clang+llvm-3.7.0-x86_64-linux-gnu-ubuntu-14.04/share/clang/clang-format.py<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctrl-p

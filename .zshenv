@@ -1,6 +1,8 @@
 ###############################################################################
 # PATH
 export PATH=$PATH:$HOME/bin/ 
+export LLVM_BIN=$HOME/Repo/clang+llvm-3.7.0-x86_64-linux-gnu-ubuntu-14.04/bin
+[ -d $LLVM_BIN ] && export PATH=$PATH:$LLVM_BIN
 
 ###############################################################################
 # Ubuntu config
