@@ -17,10 +17,12 @@ alias cdl="cd $(\ls -1t | head -n 1)"
 ###############################################################################
 # Prompt: Powerline status line
 [ $(echo $OSTYPE) = "darwin14.0" ] && export PYTHONPKG=/Library/Python/2.7/site-packages || export PYTHONPKG=/usr/local/lib/python2.7/dist-packages
-if [ -f $PYTHONPKG/powerline/bindings/zsh/powerline.zsh ]
+export POWERLINE_ZSH=$PYTHONPKG/powerline/bindings/zsh/powerline.zsh
+if [ -f $POWERLINE_ZSH ]
 then
-   source $PYTHONPKG/powerline/bindings/zsh/powerline.zsh
+   source $POWERLINE_ZSH
 else
+   unset POWERLINE_ZSH
    autoload -U promptinit
    promptinit
    prompt adam2

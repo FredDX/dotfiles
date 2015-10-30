@@ -36,6 +36,7 @@ set cinoptions=>s,e0,n0,f0,{0,}0,^0,:s,=,l0,gs,hs,ps,ts,+s,c3,C0,(0,us,U0,w0,m0,
 set bs=2 " fix the backspace
 set wildmenu   " visual autocomplete for command menu
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
+set t_Co=256 " Needed by deepsea and powerline
 colorscheme deepsea
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -124,11 +125,12 @@ let g:pymode_folding = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim powerline config with ag instead of grep
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
-let g:Powerline_symbols = 'fancy'
-set t_Co=256
+if $POWERLINE_ZSH != ""
+   python from powerline.vim import setup as powerline_setup
+   python powerline_setup()
+   python del powerline_setup
+   let g:Powerline_symbols = 'fancy'
+endif
 "set encoding=utf-8
 "set fillchars+=stl:\ ,stlnc:\
 "let g:Powerline_mode_V="V·LINE"
