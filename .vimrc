@@ -70,9 +70,11 @@ map  <leader>eb {<S-v>}:w !zsh<CR>
 
 " Shortcut
 map <leader>q :q!<cr>
+map <leader>w :w!<cr>
 map <leader>s :source $HOME/.vimrc<cr>
 map <leader>d :VCSVimDiff<cr>
-map <leader>t :NERDTreeToggle<cr>
+map <leader>tf :NERDTreeFind<cr>
+map <leader>tt :NERDTreeToggle<cr>
 
 " Split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -109,9 +111,9 @@ map <leader>f :%pyf /home/fdesmarescaux/Repo/clang+llvm-3.7.0-x86_64-linux-gnu-u
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctrl-p
-let g:ctrl_working_path_mode = 0   " Search file from starting directory
-let g:ctrl_max_files = 0
-let g:ctrl_max_depth = 40
+let g:ctrlp_working_path_mode = 0   " Search file from starting directory
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 40
 
 if executable("ag")
    set grepprg=ag\ --nogroup\ --nocolor
