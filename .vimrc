@@ -13,14 +13,19 @@ Plugin 'VundleVim/Vundle.vim'
 " List of plugin
 "Plugin 'syntastic'
 Plugin 'kien/ctrlp.vim'
-Plugin 'hewo/vim-colorscheme-deepsea'
 Plugin 'rking/ag.vim'
 Plugin 'powerline/powerline'
 Plugin 'klen/python-mode'
 Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'vcscommand.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
+" Colorscheme: [http://vimcolors.com]()
+Plugin 'hewo/vim-colorscheme-deepsea'
+Plugin 'DrSpatula/vim-buddy'
+Plugin 'ajgrf/sprinkles'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -29,7 +34,6 @@ filetype plugin indent on    " required
 " Global config
 syntax on
 set mouse=a
-set background=dark
 set exrc
 set laststatus=2
 set cinoptions=>s,e0,n0,f0,{0,}0,^0,:s,=,l0,gs,hs,ps,ts,+s,c3,C0,(0,us,U0,w0,m0,j0,)50,*200
@@ -37,7 +41,8 @@ set bs=2 " fix the backspace
 set wildmenu   " visual autocomplete for command menu
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
 set t_Co=256 " Needed by deepsea and powerline
-colorscheme deepsea
+set background=dark
+colorscheme buddy
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab config set smartindent
@@ -107,7 +112,7 @@ let g:netrw_winsize      = 30    " % of the width of Explore window
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clang-format
-map <leader>f :%pyf /home/fdesmarescaux/Repo/clang+llvm-3.7.0-x86_64-linux-gnu-ubuntu-14.04/share/clang/clang-format.py<CR>
+map <leader>f :%pyf $HOME/Repo/clang+llvm-3.7.0-x86_64-linux-gnu-ubuntu-14.04/share/clang/clang-format.py<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctrl-p
@@ -124,6 +129,12 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin python-mode config
 let g:pymode_folding = 0
+au FileType python set shiftwidth=4
+au FileType python set tabstop=4
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin vim-markdown config
+let g:vim_markdown_folding_disabled=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim powerline config with ag instead of grep
