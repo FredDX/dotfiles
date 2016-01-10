@@ -1,4 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""o"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle config
 set mouse=a
 set nocompatible
@@ -15,12 +15,17 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'hewo/vim-colorscheme-deepsea'
 Plugin 'rking/ag.vim'
-Plugin 'powerline/powerline'
+" powerline replaced by airline but keep the font
+"Plugin 'powerline/powerline'
+Plugin 'bling/vim-airline'
 Plugin 'klen/python-mode'
 Plugin 'godlygeek/tabular'
 Plugin 'vcscommand.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'bronson/vim-trailing-whitespace'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -41,8 +46,8 @@ colorscheme deepsea
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab config set smartindent
-set tabstop=3
-set shiftwidth=3
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -60,9 +65,9 @@ let mapleader = " "
 " Execute content of the current buffer
 map  <leader>er <S-v>G:w !zsh <CR>
 " exec the current line
-map  <leader>ec :.w !zsh <CR>            
+map  <leader>ec :.w !zsh <CR>
 " in visual mode, exec the selected lines
-vmap <leader>ec :w !zsh <CR>             
+vmap <leader>ec :w !zsh <CR>
 map  <leader>ea :%w !zsh <CR>
 map  <leader>ee : !zsh shoot.zsh <CR>
 map  <leader>et : !zsh shoot.zsh Test<CR>
@@ -100,7 +105,7 @@ endif
 noremap <C-e> :Vexplore<CR>
 let g:netrw_list_hide = '.swp$,.git$'
 
-let g:netrw_browse_split = 0     
+let g:netrw_browse_split = 0
 let g:netrw_preview      = 1     " p: preview vertical split
 let g:netrw_liststyle    = 3     " tree styke listing
 let g:netrw_winsize      = 30    " % of the width of Explore window
@@ -116,7 +121,8 @@ let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth = 40
 
 if executable("ag")
-   set grepprg=ag\ --nogroup\ --nocolor
+   set grepprg=ag\ --vimgrep
+   set grepformat=%f:%l:%c:%m
    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
    let g:ctrlp_use_caching = 0
 endif
@@ -126,13 +132,23 @@ endif
 let g:pymode_folding = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#buffer_nr_format = '%s '
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_powerline_fonts = 1
+map <leader>b :b
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim powerline config with ag instead of grep
-if $POWERLINE_ZSH != ""
-   python from powerline.vim import setup as powerline_setup
-   python powerline_setup()
-   python del powerline_setup
-   let g:Powerline_symbols = 'fancy'
-endif
+"if $POWERLINE_ZSH != ""
+"   python from powerline.vim import setup as powerline_setup
+"   python powerline_setup()
+"   python del powerline_setup
+"   let g:Powerline_symbols = 'setup'
+"endif
 "set encoding=utf-8
 "set fillchars+=stl:\ ,stlnc:\
 "let g:Powerline_mode_V="V·LINE"
@@ -150,3 +166,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Abbreviate
+ab jstr JSON.stringify(
+ab clog console.log(

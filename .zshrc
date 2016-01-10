@@ -8,7 +8,9 @@
 alias grep="grep --color"
 alias gs="git status"
 alias gl="git log --decorate --graph --oneline"
-alias vi="vim"
+# Specific for macos
+# mvim -v for start in a terminal but no support for the mouse
+alias vi="mvim" 
 alias mycsc="title CSCOPE; cscope -df $CSCOPE_DB"
 alias cs="cvs status"
 alias cl="cvs log"
