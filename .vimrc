@@ -20,6 +20,7 @@ Plugin 'rking/ag.vim'
 Plugin 'bling/vim-airline'
 Plugin 'klen/python-mode'
 Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'vcscommand.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
@@ -112,7 +113,7 @@ let g:netrw_winsize      = 30    " % of the width of Explore window
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clang-format
-map <leader>f :%pyf /home/fdesmarescaux/Repo/clang+llvm-3.7.0-x86_64-linux-gnu-ubuntu-14.04/share/clang/clang-format.py<CR>
+map <leader>f :%pyf $HOME/Repo/clang+llvm-3.7.0-x86_64-linux-gnu-ubuntu-14.04/share/clang/clang-format.py<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctrl-p
@@ -130,6 +131,12 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin python-mode config
 let g:pymode_folding = 0
+au FileType python set shiftwidth=4
+au FileType python set tabstop=4
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin vim-markdown config
+let g:vim_markdown_folding_disabled=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim airline
