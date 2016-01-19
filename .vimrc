@@ -13,7 +13,6 @@ Plugin 'VundleVim/Vundle.vim'
 " List of plugin
 "Plugin 'syntastic'
 Plugin 'kien/ctrlp.vim'
-Plugin 'hewo/vim-colorscheme-deepsea'
 Plugin 'rking/ag.vim'
 " powerline replaced by airline but keep the font
 "Plugin 'powerline/powerline'
@@ -28,6 +27,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'einars/js-beautify'
+Plugin 'Valloric/YouCompleteMe'
+" Colorscheme
+Plugin 'mkarmona/colorsbox'
+Plugin 'hewo/vim-colorscheme-deepsea'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -44,7 +47,8 @@ set bs=2 " fix the backspace
 set wildmenu   " visual autocomplete for command menu
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
 set t_Co=256 " Needed by deepsea and powerline
-colorscheme deepsea
+colorscheme colorsbox-material
+set hidden
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab config set smartindent
