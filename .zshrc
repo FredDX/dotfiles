@@ -6,11 +6,14 @@
 # Alias
 [ $(echo $OSTYPE) = "darwin14.0" ] && alias ls="ls -G" || alias ls="ls --color"
 alias grep="grep --color"
-alias gs="git status"
 alias gl="git log --decorate --graph --oneline"
+alias gst="git status"
+alias gdt="git difftool -y"
 # Specific for macos
 # mvim -v for start in a terminal but no support for the mouse
-alias vi="mvim" 
+alias vi="vim"
+alias mvi="mvim"
+alias vimbranch="mvim \$(git diff --name-only master...)"
 alias mycsc="title CSCOPE; cscope -df $CSCOPE_DB"
 alias cs="cvs status"
 alias cl="cvs log"
@@ -39,10 +42,12 @@ function gethostname {
 }
 
 # Title
-print -Pn "\e]0;$(gethostname) - $(basename `pwd`)\a"
+# command to print host + current folder
+#     print -Pn "\e]0;$(gethostname) - $(basename `pwd`)\a"
+print -Pn "\e]0;$(basename `pwd`)\a"
 chpwd() {
    [[ -t 1 ]] || return
-   print -Pn "\e]0;$(gethostname) - $(basename `pwd`)\a"
+   print -Pn "\e]0;$(basename `pwd`)\a"
 }
 
 ###############################################################################
