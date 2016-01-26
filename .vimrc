@@ -28,6 +28,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'einars/js-beautify'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Colorscheme
 Plugin 'mkarmona/colorsbox'
 Plugin 'hewo/vim-colorscheme-deepsea'
@@ -49,6 +50,10 @@ set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
 set t_Co=256 " Needed by deepsea and powerline
 colorscheme colorsbox-material
 set hidden
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" grep
+command! -nargs=+ MyGrep execute 'silent grep! <args>' | copen
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab config set smartindent
@@ -94,6 +99,21 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree
+let g:NERDTreeIndicatorMapCustom = {
+      \ "Modified"  : "✹",
+      \ "Staged"    : "✚",
+      \ "Untracked" : "✭",
+      \ "Renamed"   : "➜",
+      \ "Unmerged"  : "═",
+      \ "Deleted"   : "✖",
+      \ "Dirty"     : "✗",
+      \ "Clean"     : "✔︎",
+      \ "Unknown"   : "?"
+      \ }
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Cscope config
 if filereadable("cscope.out")
    cscope add cscope.out
@@ -131,7 +151,7 @@ if executable("ag")
    set grepformat=%f:%l:%c:%m
    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
    let g:ctrlp_use_caching = 0
-   map <leader>g :grep <C-R>=expand("<cword>")<CR><CR>
+   map <leader>g :MyGrep <C-R>=expand("<cword>")<CR><CR>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
