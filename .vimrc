@@ -50,10 +50,13 @@ set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
 set t_Co=256 " Needed by deepsea and powerline
 colorscheme colorsbox-material
 set hidden
+set nowrap
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " grep
-command! -nargs=+ MyGrep execute 'silent grep! <args>' | copen
+" command! -nargs=+ MyGrep execute 'silent grep! <args>' | copen
+autocmd QuickFixCmdPost *grep* cwindow
+nnoremap \ :silent grep!
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab config set smartindent
@@ -97,6 +100,9 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Buffer
+nnoremap <leader>b :ls<CR>:b
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
@@ -151,7 +157,7 @@ if executable("ag")
    set grepformat=%f:%l:%c:%m
    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
    let g:ctrlp_use_caching = 0
-   map <leader>g :MyGrep <C-R>=expand("<cword>")<CR><CR>
+   map <leader>g :silent grep! <C-R>=expand("<cword>")<CR><CR>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -166,21 +172,12 @@ let g:vim_markdown_folding_disabled=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_close_button = 0
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#buffer_nr_format = '%s '
-let g:airline#extensions#tabline#fnamemod = ':t'
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#show_close_button = 0
+"let g:airline#extensions#tabline#buffer_nr_show = 1
+"let g:airline#extensions#tabline#buffer_nr_format = '%s '
+"let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
-map <leader>1 :b 1<CR>
-map <leader>2 :b 2<CR>
-map <leader>3 :b 3<CR>
-map <leader>4 :b 4<CR>
-map <leader>5 :b 5<CR>
-map <leader>6 :b 6<CR>
-map <leader>7 :b 7<CR>
-map <leader>8 :b 8<CR>
-map <leader>9 :b 9<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim powerline config with ag instead of grep
@@ -210,5 +207,5 @@ let g:syntastic_check_on_wq = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Abbreviate
-ab jstr JSON.stringify(
-ab clog console.log(
+ab jstr JSON.stringify
+ab clog console.log

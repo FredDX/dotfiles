@@ -18,6 +18,7 @@ alias mycsc="title CSCOPE; cscope -df $CSCOPE_DB"
 alias cs="cvs status"
 alias cl="cvs log"
 alias cdl="cd $(\ls -1t | head -n 1)"
+alias tree="tree -AC"
 
 ###############################################################################
 # Prompt: Powerline status line
