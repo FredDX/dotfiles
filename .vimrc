@@ -26,7 +26,6 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'einars/js-beautify'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Colorscheme
@@ -51,11 +50,13 @@ set t_Co=256 " Needed by deepsea and powerline
 colorscheme colorsbox-material
 set hidden
 set nowrap
+" Swap files
+set noswapfile
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " grep
 " command! -nargs=+ MyGrep execute 'silent grep! <args>' | copen
-autocmd QuickFixCmdPost *grep* cwindow
+autocmd QuickFixCmdPost *grep* botright cwindow
 nnoremap \ :silent grep!
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -89,7 +90,9 @@ map  <leader>eb {<S-v>}:w !zsh<CR>
 
 " Shortcut
 map <leader>q :q!<cr>
+map <leader>Q :qall!<cr>
 map <leader>w :w!<cr>
+map <leader>W :wall!<cr>
 map <leader>s :source $HOME/.vimrc<cr>
 map <leader>d :VCSVimDiff<cr>
 map <leader>tf :NERDTreeFind<cr>
@@ -103,6 +106,15 @@ nnoremap <C-H> <C-W><C-H>
 
 " Buffer
 nnoremap <leader>b :ls<CR>:b
+
+" Tab
+nnoremap <C-T> :tab split<CR>
+
+" JS-Beautify
+vmap <leader>j : ! js-beautify -i -s 2<CR>
+
+" Trailing space
+map <leader>tr :%s/\s\+$//g<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
