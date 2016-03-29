@@ -105,3 +105,6 @@ alias xterm='xterm -fg "rgb:ff/ff/ff" -bg "rgb:58/58/59" \
                    -xrm "xterm*color15: rgb:ff/ff/ff"'
 
 
+###############################################################################
+# node
+export NODE_ENV=dev
