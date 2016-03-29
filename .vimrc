@@ -31,6 +31,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Colorscheme
 Plugin 'mkarmona/colorsbox'
 Plugin 'hewo/vim-colorscheme-deepsea'
+Plugin 'mattn/webapi-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -46,6 +47,10 @@ set cinoptions=>s,e0,n0,f0,{0,}0,^0,:s,=,l0,gs,hs,ps,ts,+s,c3,C0,(0,us,U0,w0,m0,
 set bs=2 " fix the backspace
 set wildmenu   " visual autocomplete for command menu
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
+set guioptions-=L
+set guioptions-=l
+set guioptions-=T
+set guioptions-=r
 set t_Co=256 " Needed by deepsea and powerline
 colorscheme colorsbox-material
 set hidden
@@ -93,10 +98,15 @@ map <leader>q :q!<cr>
 map <leader>Q :qall!<cr>
 map <leader>w :w!<cr>
 map <leader>W :wall!<cr>
-map <leader>s :source $HOME/.vimrc<cr>
+map <leader>ss :source $HOME/.vimrc<cr>
+map <leader>so :e $HOME/.vimrc<cr>
 map <leader>d :VCSVimDiff<cr>
 map <leader>tf :NERDTreeFind<cr>
 map <leader>tt :NERDTreeToggle<cr>
+map <leader>hh :call matchadd('Error', '<C-R><C-W>')<CR>
+vmap <leader>hh y:call matchadd('Error', '<C-R>"')<CR>
+map <leader>hc :call clearmatches()<CR>
+vmap * y/<C-R>"<CR>
 
 " Split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -112,6 +122,7 @@ nnoremap <C-T> :tab split<CR>
 
 " JS-Beautify
 vmap <leader>j : ! js-beautify -i -s 2<CR>
+map <leader>j :%! js-beautify -i -s 2<CR>
 
 " Trailing space
 map <leader>tr :%s/\s\+$//g<CR>
@@ -160,9 +171,14 @@ map <leader>f :%pyf $HOME/Repo/clang+llvm-3.7.0-x86_64-linux-gnu-ubuntu-14.04/sh
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctrl-p
+let g:ag_highlight=1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ctrl-p
 let g:ctrlp_working_path_mode = 0   " Search file from starting directory
 let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth = 40
+let g:ctrlp_switch_buffer = 'e' " Jump to already opened buffer only if in the current window
 
 if executable("ag")
    set grepprg=ag\ --vimgrep
