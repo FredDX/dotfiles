@@ -4,7 +4,7 @@
 
 ###############################################################################
 # Alias
-[ $(echo $OSTYPE) = "darwin14.0" ] && alias ls="ls -G" || alias ls="ls --color"
+[ $(echo $OSTYPE) = "darwin15.0.0" ] && alias ls="ls -G" || alias ls="ls --color"
 alias grep="grep --color"
 alias gl="git log --decorate --graph --oneline"
 alias gst="git status"
@@ -22,7 +22,7 @@ alias tree="tree -AC"
 
 ###############################################################################
 # Prompt: Powerline status line
-[ $(echo $OSTYPE) = "darwin14.0" ] && export PYTHONPKG=/Library/Python/2.7/site-packages || export PYTHONPKG=/usr/local/lib/python2.7/dist-packages
+export PYTHONPKG=/usr/local/lib/python2.7/site-packages
 export POWERLINE_ZSH=$PYTHONPKG/powerline/bindings/zsh/powerline.zsh
 if [ -f $POWERLINE_ZSH ]
 then

@@ -46,7 +46,7 @@ set laststatus=2
 set cinoptions=>s,e0,n0,f0,{0,}0,^0,:s,=,l0,gs,hs,ps,ts,+s,c3,C0,(0,us,U0,w0,m0,j0,)50,*200
 set bs=2 " fix the backspace
 set wildmenu   " visual autocomplete for command menu
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
+set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h12
 set guioptions-=L
 set guioptions-=l
 set guioptions-=T

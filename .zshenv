@@ -1,6 +1,6 @@
 ###############################################################################
 # PATH
-export PATH=$PATH:$HOME/bin/ 
+export PATH=$PATH:$HOME/bin/
 export LLVM_BIN=$HOME/Repo/clang+llvm-3.7.0-x86_64-linux-gnu-ubuntu-14.04/bin
 [ -d $LLVM_BIN ] && export PATH=$PATH:$LLVM_BIN
 
@@ -19,3 +19,7 @@ export NO_COLOUR="\033[0m"
 # Local config
 [ -f $HOME/.zshenv.local ] && source $HOME/.zshenv.local
 
+###############################################################################
+# Setup local
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
