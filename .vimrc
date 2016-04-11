@@ -52,6 +52,7 @@ set guioptions-=l
 set guioptions-=T
 set guioptions-=r
 set t_Co=256 " Needed by deepsea and powerline
+set lines=40 columns=120
 colorscheme colorsbox-material
 set hidden
 set nowrap
@@ -121,8 +122,8 @@ nnoremap <leader>b :ls<CR>:b
 nnoremap <C-T> :tab split<CR>
 
 " JS-Beautify
-vmap <leader>j : ! js-beautify -i -s 2<CR>
-map <leader>j :%! js-beautify -i -s 2<CR>
+vmap <leader>j : ! js-beautify -s 2<CR>
+map <leader>j :%! js-beautify -s 2<CR>
 
 " Trailing space
 map <leader>tr :%s/\s\+$//g<CR>
@@ -186,6 +187,7 @@ if executable("ag")
    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
    let g:ctrlp_use_caching = 0
    map <leader>g :silent grep! <C-R>=expand("<cword>")<CR><CR>
+   vmap <leader>g y:silent grep! <C-R>"<CR><CR>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
