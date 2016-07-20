@@ -1,24 +1,11 @@
 ###############################################################################
+# const
+export SKIPCI="[ci skip-e2e]"
+
+###############################################################################
 # Local config
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 
-###############################################################################
-# Alias
-[ $(echo $OSTYPE) = "darwin15.0.0" ] && alias ls="ls -G" || alias ls="ls --color"
-alias grep="grep --color"
-alias gl="git log --decorate --graph --oneline"
-alias gst="git status"
-alias gdt="git difftool -y"
-# Specific for macos
-# mvim -v for start in a terminal but no support for the mouse
-alias vi="vim"
-alias mvi="mvim"
-alias vimbranch="mvim \$(git diff --name-only master...)"
-alias mycsc="title CSCOPE; cscope -df $CSCOPE_DB"
-alias cs="cvs status"
-alias cl="cvs log"
-alias cdl="cd $(\ls -1t | head -n 1)"
-alias tree="tree -AC"
 
 ###############################################################################
 # Prompt: Powerline status line

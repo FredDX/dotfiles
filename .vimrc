@@ -37,6 +37,17 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" My script
+function! SendContent()
+  let data = { 'search': @/, 'file': @%, 'selection': @"}
+  let url = 'http://localhost:5000'
+  let header = {"Content-Type": "application/json"}
+  let res = webapi#http#post(url, webapi#json#encode(data), header)
+endfunction
+vmap <leader>m :call SendContent()<cr>
+map <leader>m :call SendContent()<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Global config
 syntax on
 set mouse=a
@@ -52,18 +63,21 @@ set guioptions-=l
 set guioptions-=T
 set guioptions-=r
 set t_Co=256 " Needed by deepsea and powerline
-set lines=40 columns=120
+"set lines=40 columns=120 " HYP: it fuck the display on terminal
 colorscheme colorsbox-material
 set hidden
 set nowrap
 " Swap files
 set noswapfile
+" new buffer: new tab
+set switchbuf+=usetab,newtab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " grep
 " command! -nargs=+ MyGrep execute 'silent grep! <args>' | copen
 autocmd QuickFixCmdPost *grep* botright cwindow
-nnoremap \ :silent grep!
+"nnoremap \ :silent grep!
+map <leader>gs :silent grep!
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab config set smartindent
@@ -118,12 +132,14 @@ nnoremap <C-H> <C-W><C-H>
 " Buffer
 nnoremap <leader>b :ls<CR>:b
 
-" Tab
+" Tab/Split
 nnoremap <C-T> :tab split<CR>
 
 " JS-Beautify
-vmap <leader>j : ! js-beautify -s 2<CR>
-map <leader>j :%! js-beautify -s 2<CR>
+vmap <leader>jj : ! js-beautify -s 2<CR>
+map <leader>jj :%! js-beautify -s 2<CR>
+vmap <leader>jc : ! /Users/frederic/mycs/js2coffee/js2coffee<CR>
+map <leader>jc :%! /Users/frederic/mycs/js2coffee/js2coffee<CR>
 
 " Trailing space
 map <leader>tr :%s/\s\+$//g<CR>
@@ -186,8 +202,8 @@ if executable("ag")
    set grepformat=%f:%l:%c:%m
    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
    let g:ctrlp_use_caching = 0
-   map <leader>g :silent grep! <C-R>=expand("<cword>")<CR><CR>
-   vmap <leader>g y:silent grep! <C-R>"<CR><CR>
+   map <leader>gg :silent grep! <C-R>=expand("<cword>")<CR><CR>
+   vmap <leader>gg y:silent grep! <C-R>"<CR><CR>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
