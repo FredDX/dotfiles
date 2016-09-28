@@ -26,12 +26,13 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Colorscheme
 Plugin 'mkarmona/colorsbox'
 Plugin 'hewo/vim-colorscheme-deepsea'
 Plugin 'mattn/webapi-vim'
+Plugin 'ledger/vim-ledger'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -144,6 +145,11 @@ map <leader>jc :%! /Users/frederic/mycs/js2coffee/js2coffee<CR>
 " Trailing space
 map <leader>tr :%s/\s\+$//g<CR>
 
+" Insert date
+map <leader>id :r!date "+\%Y-\%M-\%d"<CR>
+map <leader>ih :r!date "+\%H:\%M"<CR>
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 let g:NERDTreeIndicatorMapCustom = {
@@ -215,6 +221,8 @@ au FileType python set tabstop=4
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin vim-markdown config
 let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_new_list_item_indent = 0
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim airline
@@ -255,3 +263,7 @@ let g:syntastic_check_on_wq = 0
 " Abbreviate
 ab jstr JSON.stringify
 ab clog console.log
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" filetype
+autocmd FileType markdown set wrap
