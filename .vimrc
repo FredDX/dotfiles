@@ -33,6 +33,7 @@ Plugin 'mkarmona/colorsbox'
 Plugin 'hewo/vim-colorscheme-deepsea'
 Plugin 'mattn/webapi-vim'
 Plugin 'ledger/vim-ledger'
+Plugin 'leafgarland/typescript-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -232,6 +233,8 @@ let g:vim_markdown_new_list_item_indent = 0
 "let g:airline#extensions#tabline#buffer_nr_format = '%s '
 "let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#wordcount#enabled = 0
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim powerline config with ag instead of grep
