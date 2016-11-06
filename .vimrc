@@ -71,8 +71,7 @@ set hidden
 set nowrap
 " Swap files
 set noswapfile
-" new buffer: new tab
-set switchbuf+=usetab,newtab
+"set switchbuf+=usetab,newtab " new buffer => new tab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " grep
@@ -149,7 +148,6 @@ map <leader>tr :%s/\s\+$//g<CR>
 " Insert date
 map <leader>id :r!date "+\%Y-\%M-\%d"<CR>
 map <leader>ih :r!date "+\%H:\%M"<CR>
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
