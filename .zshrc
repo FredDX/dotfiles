@@ -97,4 +97,4 @@ alias xterm='xterm -fg "rgb:ff/ff/ff" -bg "rgb:58/58/59" \
 export NODE_ENV=dev
 
 export NVM_DIR=$HOME/.nvm
-. "$(brew --prefix nvm)/nvm.sh"
+. "/usr/local/opt/nvm/nvm.sh" --no-use
