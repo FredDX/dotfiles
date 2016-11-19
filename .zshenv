@@ -28,7 +28,7 @@ export LANG=en_US.UTF-8
 # Alias
 [ $(echo $OSTYPE) = "darwin15.0.0" ] && alias ls="ls -G" || alias ls="ls --color"
 alias grep="grep --color"
-alias gl="git log --decorate --graph --oneline --no-merges"
+alias gl="git log --decorate --graph --oneline"
 alias gst="git status"
 alias gdt="git difftool -y"
 alias gb="git branch --sort=committerdate"
