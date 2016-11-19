@@ -78,7 +78,7 @@ set noswapfile
 " grep
 " command! -nargs=+ MyGrep execute 'silent grep! <args>' | copen
 autocmd QuickFixCmdPost *grep* botright cwindow
-"nnoremap \ :silent grep!
+nnoremap \ :silent grep!
 map <leader>gs :silent grep!
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -101,9 +101,9 @@ let mapleader = " "
 
 " Execute content of the current buffer
 map  <leader>er <S-v>G:w !zsh <CR>
-" exec the current line
+" - exec the current line
 map  <leader>ec :.w !zsh <CR>
-" in visual mode, exec the selected lines
+" - in visual mode, exec the selected lines
 vmap <leader>ec :w !zsh <CR>
 map  <leader>ea :%w !zsh <CR>
 map  <leader>ee : !zsh shoot.zsh <CR>
@@ -115,14 +115,24 @@ map <leader>q :q!<cr>
 map <leader>Q :qall!<cr>
 map <leader>w :w!<cr>
 map <leader>W :wall!<cr>
+
+" .vimrc
 map <leader>ss :source $HOME/.vimrc<cr>
 map <leader>so :e $HOME/.vimrc<cr>
+
+" VCS
 map <leader>d :VCSVimDiff<cr>
+
+" NERDTree
 map <leader>tf :NERDTreeFind<cr>
 map <leader>tt :NERDTreeToggle<cr>
+
+" Highlight pattern
 map <leader>hh :call matchadd('Error', '<C-R><C-W>')<CR>
 vmap <leader>hh y:call matchadd('Error', '<C-R>"')<CR>
 map <leader>hc :call clearmatches()<CR>
+
+" Search
 vmap * y/<C-R>"<CR>
 
 " Split navigations
@@ -140,6 +150,8 @@ nnoremap <C-T> :tab split<CR>
 " JS-Beautify
 vmap <leader>jj : ! js-beautify -s 2<CR>
 map <leader>jj :%! js-beautify -s 2<CR>
+
+" js 2 coffee
 vmap <leader>jc : ! /Users/frederic/mycs/js2coffee/js2coffee<CR>
 map <leader>jc :%! /Users/frederic/mycs/js2coffee/js2coffee<CR>
 
