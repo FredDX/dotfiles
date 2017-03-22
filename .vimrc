@@ -340,3 +340,4 @@ set statusline+=%*
 
 " javascript support
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = './node_modules/.bin/eslint'
