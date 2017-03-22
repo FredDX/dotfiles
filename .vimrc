@@ -14,27 +14,37 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugin 'syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
-" powerline replaced by airline but keep the font
+"powerline replaced by airline but keep the font
 "Plugin 'powerline/powerline'
 Plugin 'bling/vim-airline'
-Plugin 'klen/python-mode'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'vcscommand.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'bronson/vim-trailing-whitespace'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'mattn/webapi-vim'
+Plugin 'jaxbot/semantic-highlight.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'tpope/vim-surround'
+
 " Colorscheme
 Plugin 'mkarmona/colorsbox'
 Plugin 'hewo/vim-colorscheme-deepsea'
-Plugin 'mattn/webapi-vim'
-Plugin 'ledger/vim-ledger'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'flazz/vim-colorschemes'
+
+" Language specific
 Plugin 'leafgarland/typescript-vim'
-Plugin 'jaxbot/semantic-highlight.vim'
+Plugin 'ledger/vim-ledger'
+Plugin 'klen/python-mode'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'pangloss/vim-javascript'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -67,7 +77,10 @@ set guioptions-=T
 set guioptions-=r
 set t_Co=256 " Needed by deepsea and powerline
 "set lines=40 columns=120 " HYP: it fuck the display on terminal
-colorscheme colorsbox-material
+"colorscheme colorsbox-material
+"colorscheme solarized
+"colorscheme Tomorrow-Night-Eighties " Install from https://github.com/chriskempson/tomorrow-theme
+colorscheme hybrid
 set hidden
 set nowrap
 " Swap files
@@ -78,8 +91,8 @@ set noswapfile
 " grep
 " command! -nargs=+ MyGrep execute 'silent grep! <args>' | copen
 autocmd QuickFixCmdPost *grep* botright cwindow
-nnoremap \ :silent grep!
-map <leader>gs :silent grep!
+"nnoremap \ :Ag<space>
+map <leader>gs :Ag<space>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab config set smartindent
@@ -142,7 +155,13 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Buffer
-nnoremap <leader>b :ls<CR>:b
+"nnoremap <leader>b :ls<CR>:b
+"
+" Buffergator
+let g:buffergator_suppress_keymaps = 1
+map <leader>bb :BuffergatorToggle<CR>
+map <leader>bf :BuffergatorOpen<CR>
+map <leader>bs :CtrlPBuffer<CR>
 
 " Tab/Split
 nnoremap <C-T> :tab split<CR>
@@ -248,6 +267,7 @@ let g:vim_markdown_new_list_item_indent = 0
 "let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#wordcount#enabled = 0
+let g:airline_theme='bubblegum'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -282,5 +302,41 @@ ab jstr JSON.stringify
 ab clog console.log
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" filetype
+" JS
+
+" allow to open a relative dependency in a require field with gf
+autocmd FileType javascript set suffixesadd+=.js
+autocmd FileType javascript set path+=.
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Markdown
 autocmd FileType markdown set wrap
+autocmd FileType markdown let g:NERDTreeWinSize = 15
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Buffergator
+let g:buffergator_autoupdate = 1
+let g:buffergator_autodismiss_on_select = 0
+let g:buffergator_sort_regime = 'basename'
+let g:buffergator_split_size = 30
+let g:buffergator_display_regime = 'basename'
+let g:buffergator_show_full_directory_path = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ledger
+au BufRead,BufNewFile *.dat setfiletype ledger
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+
+" javascript support
+let g:syntastic_javascript_checkers = ['eslint']
