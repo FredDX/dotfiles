@@ -25,6 +25,10 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 ###############################################################################
+# scripts
+export PATH=$PATH:"/Users/frederic/mycs/bin"
+
+###############################################################################
 # Alias
 [ $(echo $OSTYPE) = "darwin15.0.0" ] && alias ls="ls -G" || alias ls="ls --color"
 alias grep="grep --color"
@@ -32,10 +36,15 @@ alias gl="git log --decorate --graph --oneline"
 alias gst="git status"
 alias gdt="git difftool -y"
 alias gb="git branch --sort=committerdate"
+alias getbranch='git branch | grep "*" | cut -d " " -f 2'
+alias gitpushlocal='git push -u origin $(getbranch)'
+
+# Useful
+alias getLastDownloads='cp ~/Downloads/$(ls -rt ~/Downloads/ | tail -n 1) .'
+
 # Specific for macos
 # mvim -v for start in a terminal but no support for the mouse
 alias vi="vim"
-alias mvi="mvim"
 alias vimbranch="mvim \$(git diff --name-only master...)"
 alias mycsc="title CSCOPE; cscope -df $CSCOPE_DB"
 alias cs="cvs status"
@@ -45,6 +54,9 @@ alias tree="tree -AC"
 alias savenotes="git add *.md; git commit -m 'new notes'"
 alias jsonpath="node /Users/frederic/mycs/jsonpath/index.js"
 alias debug-structure="coffee /Users/frederic/mycs/debug-structure/index.coffee"
+
+# MYCS
+alias mycsopenpr='open https://github.com/mycsHQ/$(basename $PWD)/compare/$(getbranch)?expand=1'
 
 ###############################################################################
 # Android
