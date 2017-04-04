@@ -89,13 +89,6 @@ set noswapfile
 "set switchbuf+=usetab,newtab " new buffer => new tab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" grep
-" command! -nargs=+ MyGrep execute 'silent grep! <args>' | copen
-autocmd QuickFixCmdPost *grep* botright cwindow
-"nnoremap \ :Ag<space>
-map <leader>gs :Ag<space>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab config set smartindent
 set tabstop=2
 set shiftwidth=2
@@ -186,6 +179,19 @@ map <leader>ih :r!date "+\%H:\%M"<CR>
 map <leader>hh :SemanticHighlightToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" grep
+" command! -nargs=+ MyGrep execute 'silent grep! <args>' | copen
+autocmd QuickFixCmdPost *grep* botright cwindow
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ag
+let g:ag_highlight=1
+let g:ag_prg="ag --column --nogroup"
+map <leader>gs :Ag<space>
+map <leader>gg :Ag<space><C-R>=expand("<cword>")<CR><CR>
+vmap <leader>gg y:Ag<space><C-R>"<CR><CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 let g:NERDTreeIndicatorMapCustom = {
       \ "Modified"  : "✹",
@@ -229,22 +235,14 @@ map <leader>f :%pyf $HOME/Repo/clang+llvm-3.7.0-x86_64-linux-gnu-ubuntu-14.04/sh
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctrl-p
-let g:ag_highlight=1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ctrl-p
 let g:ctrlp_working_path_mode = 0   " Search file from starting directory
 let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth = 40
 let g:ctrlp_switch_buffer = 'e' " Jump to already opened buffer only if in the current window
 
 if executable("ag")
-   set grepprg=ag\ --vimgrep
-   set grepformat=%f:%l:%c:%m
    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
    let g:ctrlp_use_caching = 0
-   map <leader>gg :silent grep! <C-R>=expand("<cword>")<CR><CR>
-   vmap <leader>gg y:silent grep! <C-R>"<CR><CR>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
