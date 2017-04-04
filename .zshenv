@@ -30,7 +30,6 @@ export PATH=$PATH:"/Users/frederic/mycs/bin"
 
 ###############################################################################
 # Alias
-[ $(echo $OSTYPE) = "darwin15.0.0" ] && alias ls="ls -G" || alias ls="ls --color"
 alias grep="grep --color"
 alias gl="git log --decorate --graph --oneline"
 alias gst="git status"
