@@ -183,6 +183,20 @@ map <leader>ih :r!date "+\%H:\%M"<CR>
 " Semantic highlight
 map <leader>hh :SemanticHighlightToggle<CR>
 
+" Syntastic
+map <leader>sf :w!<CR>:!./node_modules/.bin/eslint --fix %<CR>:e<CR>:redraw<CR>
+
+" Macvim tab
+map <D-1> :1tabnext<CR>
+map <D-2> :2tabnext<CR>
+map <D-3> :3tabnext<CR>
+map <D-4> :4tabnext<CR>
+map <D-5> :5tabnext<CR>
+map <D-6> :6tabnext<CR>
+map <D-7> :7tabnext<CR>
+map <D-8> :8tabnext<CR>
+map <D-9> :9tabnext<CR>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " grep
 " command! -nargs=+ MyGrep execute 'silent grep! <args>' | copen
