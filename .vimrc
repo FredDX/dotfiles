@@ -65,7 +65,6 @@ map <leader>m :call SendContent()<cr>
 " Global config
 syntax on
 set mouse=a
-set background=dark
 set exrc
 set laststatus=2
 set cinoptions=>s,e0,n0,f0,{0,}0,^0,:s,=,l0,gs,hs,ps,ts,+s,c3,C0,(0,us,U0,w0,m0,j0,)50,*200
@@ -81,7 +80,13 @@ set t_Co=256 " Needed by deepsea and powerline
 "colorscheme colorsbox-material
 "colorscheme solarized
 "colorscheme Tomorrow-Night-Eighties " Install from https://github.com/chriskempson/tomorrow-theme
-colorscheme hybrid
+if has('gui_running')
+  set background=light
+  colorscheme lightcolors
+else
+  set background=dark
+  colorscheme hybrid
+endif
 set hidden
 set nowrap
 " Swap files
