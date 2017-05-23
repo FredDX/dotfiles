@@ -209,6 +209,10 @@ let g:ag_prg="ag --column --nogroup"
 map <leader>gs :Ag<space>
 map <leader>gg :Ag<space><C-R>=expand("<cword>")<CR><CR>
 vmap <leader>gg y:Ag<space><C-R>"<CR><CR>
+map <leader>gc :cclose<CR>
+map <leader>go :botright cwindow<CR>
+map <leader>gn :cNext<CR>
+map <leader>gN :cprevious<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
