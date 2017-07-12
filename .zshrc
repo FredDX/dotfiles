@@ -34,7 +34,7 @@ function gethostname {
 #     print -Pn "\e]0;$(gethostname) - $(basename `pwd`)\a"
 print -Pn "\e]0;$(basename `pwd`)\a"
 chpwd() {
-   [[ $(pwd) =~ 'rendering' ]] && nvm use v7 || nvm use v6
+   # [[ $(pwd) =~ 'rendering' ]] && nvm use v7 || nvm use v6
    [[ -t 1 ]] || return
    print -Pn "\e]0;$(basename `pwd`)\a"
 }
@@ -98,4 +98,5 @@ alias xterm='xterm -fg "rgb:ff/ff/ff" -bg "rgb:58/58/59" \
 #export NODE_ENV=dev
 
 export NVM_DIR=$HOME/.nvm
-. "/usr/local/opt/nvm/nvm.sh"
+ "/usr/local/opt/nvm/nvm.sh"
+#nvm use v7
