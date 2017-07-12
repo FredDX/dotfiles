@@ -11,7 +11,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " List of plugin
-"Plugin 'syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
 "powerline replaced by airline but keep the font
@@ -30,9 +29,12 @@ Plugin 'wincent/terminus'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'mattn/webapi-vim'
 Plugin 'jaxbot/semantic-highlight.vim'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'tpope/vim-surround'
+
+" lint/pretty
+Plugin 'w0rp/ale'
+Plugin 'mitermayer/vim-prettier'
 
 " Colorscheme
 Plugin 'mkarmona/colorsbox'
@@ -183,7 +185,7 @@ map <leader>ih :r!date "+\%H:\%M"<CR>
 " Semantic highlight
 map <leader>hh :SemanticHighlightToggle<CR>
 
-" Syntastic
+" Eslint
 map <leader>sf :w!<CR>:!./node_modules/.bin/eslint --fix %<CR>:e<CR>:redraw<CR>
 
 " Macvim tab
@@ -338,29 +340,15 @@ let g:buffergator_show_full_directory_path = 0
 au BufRead,BufNewFile *.dat setfiletype ledger
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Config syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_loc_list_height = 2
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 1
+" Ale (lint)
+let g:ale_sign_column_always = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+" vim-prettier
+let g:prettier#config#single_quote = 'true'
+let g:prettier#config#trailing_comma = 'es5'
+let g:prettier#config#print_width = 120
+let g:prettier#config#parser = 'babylon'
+let g:prettier#config#bracket_spacing = 'true'
+let g:ale_linters = { 'javascript': ['eslint'] }
 
-let g:syntastic_loc_list_height = 2
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-
-" javascript support
-"let g:syntastic_javascript_checkers = ['eslint']
-"let g:syntastic_javascript_eslint_exe = './node_modules/.bin/eslint'
