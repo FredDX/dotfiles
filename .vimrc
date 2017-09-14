@@ -42,6 +42,7 @@ Plugin 'mkarmona/colorsbox'
 Plugin 'hewo/vim-colorscheme-deepsea'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'hzchirs/vim-material'
 
 " Language specific
 Plugin 'leafgarland/typescript-vim'
@@ -83,13 +84,12 @@ set t_Co=256 " Needed by deepsea and powerline
 "colorscheme colorsbox-material
 "colorscheme solarized
 "colorscheme Tomorrow-Night-Eighties " Install from https://github.com/chriskempson/tomorrow-theme
-if has('gui_running')
-  set background=light
-  colorscheme lightcolors
-else
-  set background=dark
-  colorscheme hybrid
-endif
+"if has('gui_running')
+"set background=light
+"colorscheme lightcolors
+set background=dark
+colorscheme vim-material
+set termguicolors
 set hidden
 set nowrap
 " Swap files
@@ -292,7 +292,11 @@ let g:vim_markdown_new_list_item_indent = 0
 "let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#wordcount#enabled = 0
-let g:airline_theme='bubblegum'
+let g:airline_theme='material'
+" clean status bar
+let g:airline_section_y = ''
+let g:airline_section_z = ''
+let g:airline_section_z = airline#section#create([ 'linenr', 'maxlinenr' ])
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -343,13 +347,4 @@ au BufRead,BufNewFile *.dat setfiletype ledger
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ale (lint)
 let g:ale_sign_column_always = 1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-prettier
-let g:prettier#config#single_quote = 'true'
-let g:prettier#config#trailing_comma = 'es5'
-let g:prettier#config#print_width = 120
-let g:prettier#config#parser = 'babylon'
-let g:prettier#config#bracket_spacing = 'true'
-let g:ale_linters = { 'javascript': ['eslint'] }
 
