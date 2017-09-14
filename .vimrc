@@ -199,6 +199,8 @@ map <D-6> :6tabnext<CR>
 map <D-7> :7tabnext<CR>
 map <D-8> :8tabnext<CR>
 map <D-9> :9tabnext<CR>
+map <D-Left> :tabprevious<CR>
+map <D-Right> :tabnext<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " grep
