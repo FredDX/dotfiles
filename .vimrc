@@ -31,9 +31,10 @@ Plugin 'mattn/webapi-vim'
 Plugin 'jaxbot/semantic-highlight.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'tpope/vim-surround'
+Plugin 'elmcast/elm-vim'
 
 " lint/pretty
-Plugin 'w0rp/ale'
+"Plugin 'w0rp/ale'
 Plugin 'mitermayer/vim-prettier'
 
 " Colorscheme
