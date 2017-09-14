@@ -13,6 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 " List of plugin
 Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
+Plugin 'ddrscott/vim-side-search'
 "powerline replaced by airline but keep the font
 "Plugin 'powerline/powerline'
 Plugin 'bling/vim-airline'
@@ -43,6 +44,9 @@ Plugin 'hewo/vim-colorscheme-deepsea'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'hzchirs/vim-material'
+Plugin 'junegunn/seoul256.vim'
+Plugin 'crusoexia/vim-monokai'
+Plugin 'tomasr/molokai'
 
 " Language specific
 Plugin 'leafgarland/typescript-vim'
@@ -71,6 +75,7 @@ syntax on
 set mouse=a
 set exrc
 set laststatus=2
+set cursorline
 set cinoptions=>s,e0,n0,f0,{0,}0,^0,:s,=,l0,gs,hs,ps,ts,+s,c3,C0,(0,us,U0,w0,m0,j0,)50,*200
 set bs=2 " fix the backspace
 set wildmenu   " visual autocomplete for command menu
@@ -88,7 +93,7 @@ set t_Co=256 " Needed by deepsea and powerline
 "set background=light
 "colorscheme lightcolors
 set background=dark
-colorscheme vim-material
+colorscheme molokai
 set termguicolors
 set hidden
 set nowrap
@@ -208,6 +213,10 @@ map <D-Right> :tabnext<CR>
 autocmd QuickFixCmdPost *grep* botright cwindow
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Search
+nnoremap * *N
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ag
 let g:ag_highlight=1
 let g:ag_prg="ag --column --nogroup"
@@ -218,6 +227,13 @@ map <leader>gc :cclose<CR>
 map <leader>go :botright cwindow<CR>
 map <leader>gn :cNext<CR>
 map <leader>gN :cprevious<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Side search
+let g:side_search_prg = 'ag --word-regexp --heading --stats -C 5 --group'
+map <leader>fs :SideSearch<space>
+map <leader>ff :SideSearch<space><C-R>=expand("<cword>")<CR><CR>
+vmap <leader>ff y:SideSearch<space><C-R>"<CR><CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
