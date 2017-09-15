@@ -205,7 +205,6 @@ let g:vim_markdown_new_list_item_indent = 0
 " Vim airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#wordcount#enabled = 0
-let g:airline_theme='material'
 let g:airline_section_y = '' " clean status bar
 let g:airline_section_z = ''
 let g:airline_section_z = airline#section#create([ 'linenr', 'maxlinenr' ])
