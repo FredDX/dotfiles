@@ -51,9 +51,12 @@ alias cs="cvs status"
 alias cl="cvs log"
 alias cdl="cd $(\ls -1t | head -n 1)"
 alias tree="tree -AC"
-alias savenotes="git add *.md; git commit -m 'new notes'"
 alias jsonpath="node /Users/frederic/mycs/jsonpath/index.js"
 alias debug-structure="coffee /Users/frederic/mycs/debug-structure/index.coffee"
+
+# Notes
+alias savenotes="git add *.md; git commit -m 'new notes'"
+alias note="cd ~/mycs/notes; mvim TODO.md"
 
 # MYCS
 alias mycsopenpr='open https://github.com/mycsHQ/$(basename $PWD)/compare/$(getbranch)?expand=1'

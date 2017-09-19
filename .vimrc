@@ -63,6 +63,7 @@ set hidden
 set nowrap
 set noswapfile " Swap files
 "set switchbuf+=usetab,newtab " new buffer => new tab
+set synmaxcol=200 "reduce performance issue with very long lines
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab config set smartindent
