@@ -34,7 +34,7 @@ alias ls="ls -G"
 alias grep="grep --color"
 alias gl="git log --decorate --graph --oneline"
 alias gst="git status"
-alias gdt="git difftool -y"
+alias gdt="git difftool"
 alias gb="git branch --sort=committerdate"
 alias getbranch='git branch | grep "*" | cut -d " " -f 2'
 alias gitpushlocal='git push -u origin $(getbranch)'

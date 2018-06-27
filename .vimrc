@@ -21,19 +21,25 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'wincent/terminus'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-surround'
 
+Plugin 'flowtype/vim-flow'
 " lint/pretty
 Plugin 'w0rp/ale'
+Plugin 'prettier/vim-prettier'
 
 " Colorscheme
 Plugin 'tomasr/molokai'
+Plugin 'nightsense/seabird'
 
 " Language specific
 Plugin 'pangloss/vim-javascript'
+Plugin 'ElmCast/elm-vim'
+Plugin 'leafgarland/typescript-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -85,10 +91,10 @@ vmap * y/<C-R>"<CR>N
 let mapleader = " "     " Leaser map to space
 
 " Shortcut
-map <leader>q :q!<cr>
-map <leader>Q :qall!<cr>
-map <leader>w :w!<cr>
-map <leader>W :wall!<cr>
+"map <leader>q :q!<cr>
+"map <leader>Q :qall!<cr>
+"map <leader>w :w!<cr>
+"map <leader>W :wall!<cr>
 
 " .vimrc
 map <leader>ss :source $HOME/.vimrc<cr>
@@ -194,8 +200,8 @@ let g:vim_markdown_new_list_item_indent = 0
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#wordcount#enabled = 0
 let g:airline_section_y = '' " clean status bar
-let g:airline_section_z = ''
-let g:airline_section_z = airline#section#create([ 'linenr', 'maxlinenr' ])
+"let g:airline_section_z = ''
+"let g:airline_section_z = airline#section#create([ 'linenr', 'maxlinenr' ])
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JS
@@ -211,4 +217,14 @@ autocmd FileType markdown let g:NERDTreeWinSize = 15
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ale (lint)
 let g:ale_sign_column_always = 1
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_linters = {'typescript': ['prettier', 'tsserver']}
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vimdiff
+map <leader>d2 :windo diffthis<CR>
+map <leader>do :windo diffoff<CR>
+map <leader>dd :Gdiff HEAD^<CR>
+
 
