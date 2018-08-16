@@ -44,7 +44,8 @@ alias getLastDownloads='cp ~/Downloads/$(ls -rt ~/Downloads/ | tail -n 1) .'
 
 # Specific for macos
 # mvim -v for start in a terminal but no support for the mouse
-alias vi="vim"
+alias vi="mvim -v"
+alias vim="mvim -v"
 alias vimbranch="mvim \$(git diff --name-only master...)"
 alias mycsc="title CSCOPE; cscope -df $CSCOPE_DB"
 alias cs="cvs status"

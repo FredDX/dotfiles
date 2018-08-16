@@ -40,6 +40,7 @@ Plugin 'nightsense/seabird'
 Plugin 'pangloss/vim-javascript'
 Plugin 'ElmCast/elm-vim'
 Plugin 'leafgarland/typescript-vim'
+"Plugin 'Quramy/tsuquyomi'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -217,11 +218,11 @@ autocmd FileType markdown let g:NERDTreeWinSize = 15
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ale (lint)
 let g:ale_set_highlights = 0
-let g:ale_set_signs = 0
 let g:ale_sign_column_always = 1
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_linters = {'typescript': ['prettier', 'tsserver']}
+"let g:ale_linters = {'typescript': []}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vimdiff

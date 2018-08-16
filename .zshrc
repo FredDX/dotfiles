@@ -9,6 +9,7 @@ export SKIPCI="[ci skip-e2e]"
 
 ###############################################################################
 # Prompt: Powerline status line
+#export PYTHONPKG=/usr/local/lib/python2.7/site-packages
 export PYTHONPKG=/usr/local/lib/python2.7/site-packages
 export POWERLINE_ZSH=$PYTHONPKG/powerline/bindings/zsh/powerline.zsh
 if [ -f $POWERLINE_ZSH ]
