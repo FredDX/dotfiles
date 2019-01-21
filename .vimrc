@@ -26,6 +26,7 @@ Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'wincent/terminus'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-surround'
+Plugin 'MultipleSearch'
 
 Plugin 'flowtype/vim-flow'
 " lint/pretty
@@ -38,6 +39,7 @@ Plugin 'nightsense/seabird'
 
 " Language specific
 Plugin 'pangloss/vim-javascript'
+Plugin 'jelera/vim-javascript-syntax'
 Plugin 'ElmCast/elm-vim'
 Plugin 'leafgarland/typescript-vim'
 "Plugin 'Quramy/tsuquyomi'
@@ -55,6 +57,7 @@ set cursorline
 set cinoptions=>s,e0,n0,f0,{0,}0,^0,:s,=,l0,gs,hs,ps,ts,+s,c3,C0,(0,us,U0,w0,m0,j0,)50,*200
 set bs=2 " fix the backspace
 set wildmenu " visual autocomplete for command menu
+set guifont=Menlo:h12
 set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h12
 set guioptions-=L
 set guioptions-=l
@@ -70,7 +73,7 @@ set hidden
 set nowrap
 set noswapfile " Swap files
 "set switchbuf+=usetab,newtab " new buffer => new tab
-set synmaxcol=200 "reduce performance issue with very long lines
+set synmaxcol=500 "reduce performance issue with very long lines
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab config set smartindent
@@ -214,6 +217,8 @@ autocmd FileType javascript set path+=.
 " Markdown
 autocmd FileType markdown set wrap
 autocmd FileType markdown let g:NERDTreeWinSize = 15
+autocmd FileType markdown set background=light
+autocmd FileType markdown colorscheme seagull
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ale (lint)
@@ -230,4 +235,13 @@ map <leader>d2 :windo diffthis<CR>
 map <leader>do :windo diffoff<CR>
 map <leader>dd :Gdiff HEAD^<CR>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MultipleSearch
+"map <leader>hh :call matchadd('customMatch1', '<C-R><C-W>')<CR>
+"vmap <leader>hh y:call matchadd('customMatch2', '<C-R>"')<CR>
+"map <leader>hc :call clearmatches()<CR>
+let g:MultipleSearchMaxColors = 8
+map <leader>hh :Search <C-R><C-W><CR>
+vmap <leader>hh y:Search <C-R>"<CR>
+map <leader>hc :SearchRest<CR>
 

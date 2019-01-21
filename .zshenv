@@ -44,9 +44,12 @@ alias getLastDownloads='cp ~/Downloads/$(ls -rt ~/Downloads/ | tail -n 1) .'
 
 # Specific for macos
 # mvim -v for start in a terminal but no support for the mouse
-alias vi="mvim -v"
-alias vim="mvim -v"
-alias vimbranch="mvim \$(git diff --name-only master...)"
+# alias vi="mvim -v"
+# alias vim="mvim -v"
+# alias vimdiff="mvimdiff -v"
+# alias vimbranch="mvim \$(git diff --name-only master...)"
+alias vi="vim"
+alias vimbranch="vim \$(git diff --name-only master...)"
 alias mycsc="title CSCOPE; cscope -df $CSCOPE_DB"
 alias cs="cvs status"
 alias cl="cvs log"
@@ -61,8 +64,19 @@ alias note="cd ~/mycs/notes; mvim TODO.md"
 
 # MYCS
 alias mycsopenpr='open https://github.com/mycsHQ/$(basename $PWD)/compare/$(getbranch)?expand=1'
+alias mycsci='open https://circleci.com/gh/mycsHQ/workflows/$(basename $PWD)'
 
 ###############################################################################
 # Android
 export ANDROID_HOME="/Users/frederic/NVPACK/android-sdk-macosx"
 export PATH=$PATH:"/Users/frederic/NVPACK/android-sdk-macosx/platform-tools"
+
+###############################################################################
+# Postgresql
+export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+
+###############################################################################
+# PSQL local port
+export PSQL_PORT_NINJA=5433
+export PSQL_PORT_COM=5434
+export PSQL_PORT_IO=5435
