@@ -76,12 +76,6 @@ export PATH=$PATH:"/Users/frederic/NVPACK/android-sdk-macosx/platform-tools"
 export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 
 ###############################################################################
-# PSQL local port
-export PSQL_PORT_NINJA=5433
-export PSQL_PORT_COM=5434
-export PSQL_PORT_IO=5435
-
-###############################################################################
 # node
 #export NODE_ENV=dev
 
