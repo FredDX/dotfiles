@@ -217,11 +217,16 @@ autocmd FileType javascript set path+=.
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Markdown
-autocmd FileType markdown nested set wrap
-autocmd FileType markdown nested let g:NERDTreeWinSize = 15
-autocmd FileType markdown nested set background=light
-autocmd FileType markdown nested colorscheme seagull
-autocmd FileType markdown nested redraw!
+function MyCustomMarkdown()
+  if (getcwd()) =~ '\/mycs\/notes'
+    set wrap
+    let g:NERDTreeWinSize = 15
+    set background=light
+    colorscheme seagull
+    redraw!
+  endif
+endfunction
+autocmd FileType markdown nested call MyCustomMarkdown()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ale (lint)
