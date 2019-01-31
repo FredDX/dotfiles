@@ -36,6 +36,7 @@ Plugin 'prettier/vim-prettier'
 " Colorscheme
 Plugin 'tomasr/molokai'
 Plugin 'nightsense/seabird'
+Plugin 'rakr/vim-one'
 
 " Language specific
 Plugin 'pangloss/vim-javascript'
@@ -66,7 +67,9 @@ set ttyfast " Faster redrawing.
 set lazyredraw " Only redraw when necessary.
 set t_Co=256 " Needed by deepsea and powerline
 set background=dark
-colorscheme molokai "colorscheme colorsbox-material solarized Tomorrow-Night-Eighties lightcolors
+"colorscheme colorsbox-material solarized Tomorrow-Night-Eighties lightcolors
+"colorscheme molokai
+colorscheme one
 set termguicolors
 set hidden
 set nowrap
@@ -214,10 +217,11 @@ autocmd FileType javascript set path+=.
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Markdown
-autocmd FileType markdown set wrap
-autocmd FileType markdown let g:NERDTreeWinSize = 15
-autocmd FileType markdown set background=light
-autocmd FileType markdown colorscheme seagull
+autocmd FileType markdown nested set wrap
+autocmd FileType markdown nested let g:NERDTreeWinSize = 15
+autocmd FileType markdown nested set background=light
+autocmd FileType markdown nested colorscheme seagull
+autocmd FileType markdown nested redraw!
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ale (lint)
