@@ -98,6 +98,13 @@ alias xterm='xterm -fg "rgb:ff/ff/ff" -bg "rgb:58/58/59" \
 # node
 #export NODE_ENV=dev
 
-export NVM_DIR=$HOME/.nvm
-source "/usr/local/opt/nvm/nvm.sh"
-nvm use v8
+#export NVM_DIR=$HOME/.nvm
+#source "/usr/local/opt/nvm/nvm.sh"
+#nvm use v8
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/frederic/.nvm/versions/node/v8.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/frederic/.nvm/versions/node/v8.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/frederic/.nvm/versions/node/v8.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/frederic/.nvm/versions/node/v8.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh

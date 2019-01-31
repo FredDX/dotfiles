@@ -80,3 +80,14 @@ export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 export PSQL_PORT_NINJA=5433
 export PSQL_PORT_COM=5434
 export PSQL_PORT_IO=5435
+
+###############################################################################
+# node
+#export NODE_ENV=dev
+
+export NVM_DIR=$HOME/.nvm
+#source "/usr/local/opt/nvm/nvm.sh" --no-use
+#nvm use v8
+export NVM_CD_FLAGS="-q"
+export NVM_BIN=$NVM_DIR/versions/node/v8.10.0/bin
+export PATH="$NVM_BIN:$PATH"
