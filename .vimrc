@@ -232,10 +232,9 @@ autocmd FileType markdown nested call MyCustomMarkdown()
 " Ale (lint)
 let g:ale_set_highlights = 0
 let g:ale_sign_column_always = 1
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_linters = {'typescript': ['prettier', 'tsserver']}
-"let g:ale_linters = {'typescript': []}
+"let g:ale_lint_on_save = 1
+"let g:ale_lint_on_text_changed = 1
+let g:ale_linters = {'typescript': ['tsserver']}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vimdiff
