@@ -63,7 +63,7 @@ alias savenotes="git add *.md; git commit -m 'new notes'"
 alias note="cd ~/mycs/notes; mvim TODO.md"
 
 # MYCS
-alias mycsopenpr='open https://github.com/mycsHQ/$(basename $PWD)/compare/$(getbranch)?expand=1'
+alias mycsopenpr='open "https://github.com/mycsHQ/$(basename $PWD)/compare/$(getbranch)?expand=1"'
 alias mycsci='open https://circleci.com/gh/mycsHQ/workflows/$(basename $PWD)'
 
 ###############################################################################
