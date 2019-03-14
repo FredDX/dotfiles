@@ -250,5 +250,5 @@ map <leader>dd :Gdiff HEAD^<CR>
 let g:MultipleSearchMaxColors = 8
 map <leader>hh :Search <C-R><C-W><CR>
 vmap <leader>hh y:Search <C-R>"<CR>
-map <leader>hc :SearchRest<CR>
+map <leader>hc :SearchReset<CR>
 
