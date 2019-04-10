@@ -189,6 +189,8 @@ if executable("ag")
 endif
 
 map <leader>bs :CtrlPBuffer<CR>
+map <leader>gf <C-P><C-\>w<CR>
+vmap <leader>gf <C-P><C-\>v<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin python-mode config
