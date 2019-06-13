@@ -93,6 +93,9 @@ alias xterm='xterm -fg "rgb:ff/ff/ff" -bg "rgb:58/58/59" \
                    -xrm "xterm*color14: rgb:55/d5/cd"    \
                    -xrm "xterm*color15: rgb:ff/ff/ff"'
 
+###############################################################################
+# alias
+alias workdone="osascript -e 'display notification \"done\" with title \"Work\" sound name \"Glass\"'"
 
 ###############################################################################
 # node
