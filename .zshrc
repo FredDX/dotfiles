@@ -10,7 +10,7 @@ export SKIPCI="[ci skip-e2e]"
 ###############################################################################
 # Prompt: Powerline status line
 #export PYTHONPKG=/usr/local/lib/python2.7/site-packages
-export PYTHONPKG=/usr/local/lib/python2.7/site-packages
+export PYTHONPKG=$HOME/.local/lib/python3.6/site-packages
 export POWERLINE_ZSH=$PYTHONPKG/powerline/bindings/zsh/powerline.zsh
 if [ -f $POWERLINE_ZSH ]
 then
@@ -74,6 +74,10 @@ export SAVEHIST=10000
 export CSCOPE_EDITOR=vim
 
 ###############################################################################
+# ls
+alias ls='ls --color'
+
+###############################################################################
 # Xterm
 alias xterm='xterm -fg "rgb:ff/ff/ff" -bg "rgb:58/58/59" \
                    -xrm "xterm*color0: rgb:3f/3f/3f"     \
@@ -111,3 +115,13 @@ alias workdone="osascript -e 'display notification \"done\" with title \"Work\" 
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /Users/frederic/.nvm/versions/node/v8.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/frederic/.nvm/versions/node/v8.10.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+
+
+
+###############################################################################
+# Enable Ctrl-x-e to edit command line
+autoload -U edit-command-line
+# Vi style:
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+alias ec='edit-command-line'

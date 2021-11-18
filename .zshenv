@@ -25,6 +25,10 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 ###############################################################################
+# python
+export PATH=$PATH:"$HOME/.local/bin/"
+
+###############################################################################
 # scripts
 export PATH=$PATH:"/Users/frederic/mycs/bin"
 
@@ -55,7 +59,7 @@ alias cs="cvs status"
 alias cl="cvs log"
 alias cdl="cd $(\ls -1t | head -n 1)"
 alias tree="tree -AC"
-alias jsonpath="node /Users/frederic/mycs/jsonpath/index.js"
+alias jsonpath="node /home/frederic/projects/jsonpath/index.js"
 alias debug-structure="coffee /Users/frederic/mycs/debug-structure/index.coffee"
 
 # Notes
@@ -63,7 +67,7 @@ alias savenotes="git add *.md; git commit -m 'new notes'"
 alias note="cd ~/mycs/notes; mvim TODO.md"
 
 # MYCS
-alias mycsopenpr='open "https://github.com/mycsHQ/$(basename $PWD)/compare/$(getbranch)?expand=1"'
+alias mycsopenpr='google-chrome "https://github.com/mycsHQ/$(basename $PWD)/compare/$(getbranch)?expand=1"'
 alias mycsci='open https://circleci.com/gh/mycsHQ/workflows/$(basename $PWD)'
 
 ###############################################################################
@@ -77,11 +81,20 @@ export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 
 ###############################################################################
 # node
-#export NODE_ENV=dev
+NPM_PACKAGES="$HOME/.npm-packages"
+export PATH="$PATH:$NPM_PACKAGES/bin"
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
-export NVM_DIR=$HOME/.nvm
-#source "/usr/local/opt/nvm/nvm.sh" --no-use
-#nvm use v8
-export NVM_CD_FLAGS="-q"
-export NVM_BIN=$NVM_DIR/versions/node/v8.10.0/bin
-export PATH="$NVM_BIN:$PATH"
+###############################################################################
+# go
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
+###############################################################################
+# my script
+export PATH="$PATH:/$HOME/.bin"
+
+###############################################################################
+# CUDA
+export PATH="/usr/local/cuda/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda/lib64/:$LD_LIBRARY_PATH"

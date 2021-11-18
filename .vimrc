@@ -30,7 +30,7 @@ Plugin 'MultipleSearch'
 
 Plugin 'flowtype/vim-flow'
 " lint/pretty
-Plugin 'w0rp/ale'
+" Plugin 'w0rp/ale'
 Plugin 'prettier/vim-prettier'
 
 " Colorscheme
@@ -44,6 +44,10 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'ElmCast/elm-vim'
 Plugin 'leafgarland/typescript-vim'
 "Plugin 'Quramy/tsuquyomi'
+Plugin 'SirVer/ultisnips'
+
+" Own
+Plugin 'code-highlight'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -58,15 +62,11 @@ set cursorline
 set cinoptions=>s,e0,n0,f0,{0,}0,^0,:s,=,l0,gs,hs,ps,ts,+s,c3,C0,(0,us,U0,w0,m0,j0,)50,*200
 set bs=2 " fix the backspace
 set wildmenu " visual autocomplete for command menu
-set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h12
-set guioptions-=L
-set guioptions-=l
-set guioptions-=T
-set guioptions-=r
+"set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h12
 set ttyfast " Faster redrawing.
 set lazyredraw " Only redraw when necessary.
 set t_Co=256 " Needed by deepsea and powerline
-set background=dark
+set background=light
 "colorscheme colorsbox-material solarized Tomorrow-Night-Eighties lightcolors
 "colorscheme molokai
 colorscheme one
@@ -76,6 +76,7 @@ set nowrap
 set noswapfile " Swap files
 "set switchbuf+=usetab,newtab " new buffer => new tab
 set synmaxcol=500 "reduce performance issue with very long lines
+set scrolloff=8 " Number of screen lines to show around the cursor
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab config set smartindent
@@ -143,7 +144,8 @@ map <leader>gN :cprevious<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Side search
-let g:side_search_prg = 'ag --word-regexp --heading --stats -C 5 --group'
+"let g:side_search_prg = 'ag --word-regexp --heading --stats -C 5 --group'
+let g:side_search_prg = 'ag --heading --stats -C 6 --group'
 map <leader>fs :SideSearch<space>
 map <leader>ff :SideSearch<space><C-R>=expand("<cword>")<CR><CR>
 vmap <leader>ff y:SideSearch<space><C-R>"<CR><CR>
@@ -218,17 +220,41 @@ autocmd FileType javascript set suffixesadd+=.js
 autocmd FileType javascript set path+=.
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Markdown
-function MyCustomMarkdown()
-  if (getcwd()) =~ '\/mycs\/notes'
-    set wrap
-    let g:NERDTreeWinSize = 15
-    set background=light
-    colorscheme seagull
-    redraw!
-  endif
-endfunction
-autocmd FileType markdown nested call MyCustomMarkdown()
+" Notes config
+" style setup
+if (getcwd()) =~ '\/notes'
+  set wrap
+  let g:NERDTreeWinSize = 15
+  set background=light
+  colorscheme seagull
+  redraw!
+endif
+
+" notes shortcut
+map <leader>nc :r!save-clipboard-to-notes<cr>
+map <leader>nn :!gst<cr>
+map <leader>nd :r!date "+\%F"<cr>E
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" copy/paste
+vmap <M-c> "+y
+map <M-v> "+p
+imap <M-v> <ESC>"+pa
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" tab shortcut
+map <M-1> :1tabnext<CR>
+map <M-2> :2tabnext<CR>
+map <M-3> :3tabnext<CR>
+map <M-4> :4tabnext<CR>
+map <M-5> :5tabnext<CR>
+map <M-6> :6tabnext<CR>
+map <M-7> :7tabnext<CR>
+map <M-8> :8tabnext<CR>
+map <M-9> :9tabnext<CR>
+
+map <M-Left> :tabprevious<CR>
+map <M-Right> :tabnext<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ale (lint)
@@ -249,8 +275,34 @@ map <leader>dd :Gdiff HEAD^<CR>
 "map <leader>hh :call matchadd('customMatch1', '<C-R><C-W>')<CR>
 "vmap <leader>hh y:call matchadd('customMatch2', '<C-R>"')<CR>
 "map <leader>hc :call clearmatches()<CR>
-let g:MultipleSearchMaxColors = 8
-map <leader>hh :Search <C-R><C-W><CR>
-vmap <leader>hh y:Search <C-R>"<CR>
-map <leader>hc :SearchReset<CR>
+"let g:MultipleSearchMaxColors = 8
+"map <leader>hh :Search <C-R><C-W><CR>
+"vmap <leader>hh y:Search <C-R>"<CR>
+"map <leader>hc :SearchReset<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Search path containing this word
+map <leader>gi :r!ag<space>-l<space><C-R>=expand("<cword>")<CR><CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Prettier
+let g:prettier#exec_cmd_path = "/home/frederic/.npm-packages/bin/prettier"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" UltiSnips
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<s-tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Browser support
+" - gx: open a link in the browser
+" - Gbrowse: open the file in github
+let g:netrw_browsex_viewer= "google-chrome"
+
 
